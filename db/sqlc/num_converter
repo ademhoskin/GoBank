@@ -1,7 +1,0 @@
-func DecimalToNumeric(d float64, scale int32) pgtype.Numeric {
-    i := int64(d * math.Pow10(int(scale)))
-    return pgtype.Numeric{
-        Int:    big.NewInt(i),
-        Status: pgtype.Present,
-    }
-}
