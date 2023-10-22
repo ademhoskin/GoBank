@@ -1,17 +1,22 @@
 package db
 
 import (
-	"testing"
 	"context"
-	"github.com/ademhoskin/GoBank/db/num_converter"
+	"math/big"
+	"testing"
+
+	"github.com/jackc/pgx/v5/pgtype"
 	"github.com/stretchr/testify/require"
 )
 
 func TestCreateAccount(t *testing.T) {
 	arg := CreateAccountParams{
 		Owner: "John",
-		Balance: num_converter.DecimalToNumeric(100,2),
+		Balance: pgtype.Numeric{
+			Int:    big.NewInt(int64(100.00 * 100)), // Convert to cents (assuming 2 decimal places)
+		},
 	}
+
 	account, err := testQueries.CreateAccount(context.Background(), arg)
 	require.NoError(t, err)
 	require.NotEmpty(t, account)
