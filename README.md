@@ -7,4 +7,7 @@ Bank System using Go and Postgres
 - "make createdb" creates bank database
 - "make dropdb" drops bank database if needed
 -  'make migrateup' to migrate bank db up, 'migratedown' to migrate down
+
+#Tests
+- "make tests" will run all tests for project
   
