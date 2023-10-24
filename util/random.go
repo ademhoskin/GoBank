@@ -23,15 +23,14 @@ func RandomString(n int) string {
   return sb.String()
 }
 
-func RandomOwner() string {
+func RandomName() string {
   return RandomString(6)
 }
 
+// numeric in postgres will be stored as string, float will not work with postgres numeric
 func RandomNumeric() string {
   intPart := rand.Intn(1000000)
   decimalPart := rand.Intn(100)
   return fmt.Sprintf("%d.%02d", intPart, decimalPart)
 }
-
-
 
